@@ -1,0 +1,28 @@
+<section class="reservation-form">
+  <div class="container">
+    <h2>Réservez Votre Course</h2>
+    <form action="{{ path('reserver_submit') }}" method="post" class="form-grid">
+      <!-- Type de véhicule -->
+      <div class="form-group">
+        <label>Type de véhicule</label>
+        <div class="vehicle-types">
+          {% for type in vehicle_types %}
+            <label>
+              <input type="radio" name="vehicle_type" value="{{ type.value }}" {% if loop.first %}checked{% endif %}>
+              <img src="{{ asset(type.image) }}" alt="{{ type.label }}">
+              {{ type.label }}
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- Adresses, date, heure, téléphone, passagers -->
+      <input type="text" name="pickup" placeholder="Adresse de prise en charge *" required>
+      <input type="text" name="destination" placeholder="Adresse de destination *" required>
+      <input type="date" name="date" required>
+      <input type="time" name="heure" required>
+      <input type="tel" name="telephone" placeholder="Numéro de téléphone *" required>
+      <input type="number" name="passagers" min="1" max="8" value="1" required>
+      <button type="submit" class="btn btn-danger">Confirmer la Réservation</button>
+    </form>
+  </div>
+</section>

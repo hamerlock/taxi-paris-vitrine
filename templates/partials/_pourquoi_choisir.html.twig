@@ -1,0 +1,14 @@
+<section class="pourquoi-choisir">
+  <div class="container">
+    <h2>Pourquoi Nous Choisir ?</h2>
+    <div class="avantages">
+      {% for avantage in avantages %}
+        <div class="avantage-card">
+          <img src="{{ asset(avantage.icon) }}" alt="">
+          <h3>{{ avantage.titre }}</h3>
+          <p>{{ avantage.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

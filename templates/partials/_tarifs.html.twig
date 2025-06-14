@@ -1,0 +1,20 @@
+<section class="tarifs-fixes">
+  <div class="container">
+    <h2>Nos Tarifs Fixes</h2>
+    <div class="tarifs-cards">
+      {% for tarif in tarifs %}
+        <div class="tarif-card{% if tarif.populaire %} populaire{% endif %}">
+          <img src="{{ asset(tarif.image) }}" alt="{{ tarif.titre }}">
+          <h3>{{ tarif.titre }}</h3>
+          <div class="tarif-prix">{{ tarif.prix }}</div>
+          <ul>
+            {% for avantage in tarif.avantages %}
+              <li>{{ avantage }}</li>
+            {% endfor %}
+          </ul>
+          <a href="{{ path('reserver', {'type': tarif.slug}) }}" class="btn btn-tertiary">Réserver {{ tarif.cta }}</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
