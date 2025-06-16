@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-final class PageController extends AbstractController
+final class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
     public function home(): Response
@@ -109,7 +109,7 @@ final class PageController extends AbstractController
     #[Route('/reserver/submit', name: 'reserver_submit', methods: ['POST'])]
     public function reserverSubmit(Request $request): Response
     {
-        // Pour l'instant, on récupère les données du formulaire (bidon)
+        // Pour l'instant, on récupère les données du formulaire
         $data = $request->request->all();
 
         // Ici tu pourrais traiter la réservation, envoyer un email, etc.
@@ -120,26 +120,5 @@ final class PageController extends AbstractController
             'success' => $success,
             'data' => $data,
         ]);
-    }
-
-    #[Route('/tarifs', name: 'tarifs')]
-    public function tarifs(): Response
-    {
-        // Tu peux afficher une page de test pour l'instant
-        return $this->render('tarifs.html.twig');
-    }
-
-    #[Route('/services', name: 'services')]
-    public function services(): Response
-    {
-        // Tu peux afficher une page de test pour l'instant
-        return $this->render('services.html.twig');
-    }
-
-    #[Route('/contact', name: 'contact')]
-    public function contact(): Response
-    {
-        // Tu peux afficher une page de test pour l'instant
-        return $this->render('contact.html.twig');
     }
 }
