@@ -1,15 +1,15 @@
 <header class="site-header">
   <div class="container header-flex">
     <a href="{{ path('home') }}" class="logo">
-      <img src="/path/to/logo.png" alt="Taxi Paris Centre">
+      <img src="/images/logo.png" alt="Taxi Paris Centre">
     </a>
     <nav class="main-nav">
       <ul>
         <li><a href="{{ path('home') }}">Accueil</a></li>
-        <li><a href="{{ path('tarifs') }}">Tarifs</a></li>
-        <li><a href="{{ path('reserver') }}">Réserver</a></li>
-        <li><a href="{{ path('services') }}">Services</a></li>
-        <li><a href="{{ path('contact') }}">Contact</a></li>
+        <li><a href="{{ path('home') }}#tarifs">Tarifs</a></li>
+        <li><a href="{{ path('home') }}#reservation">Réserver</a></li>
+        <li><a href="{{ path('home') }}#services">Services</a></li>
+        <li><a href="{{ path('home') }}#contact">Contact</a></li>
       </ul>
     </nav>
     <div class="header-actions">

@@ -93,144 +93,230 @@ img {
 
 /* Hero */
 .hero {
-  background: linear-gradient( rgba(20,40,80,0.7), rgba(20,40,80,0.7) ), url('/images/paris-bg.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
   color: #fff;
-  padding: 4rem 0 2.5rem 0;
+  padding: 6rem 0 4rem 0;
   text-align: center;
   position: relative;
 }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
 .hero-content h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
   letter-spacing: -1px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
+
 .hero-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
   font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
+
 .hero-buttons {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
-  margin-bottom: 1.2rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
+
+.hero-buttons .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
   font-weight: 600;
   font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  box-shadow: 0 2px 8px #0002;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
-.btn-primary {
-  background: #ffd600;
-  color: #222;
+
+.hero-buttons .btn i {
+  font-size: 1.3rem;
 }
-.btn-primary:hover {
-  background: #ffe066;
-}
-.btn-secondary {
-  background: #fff;
-  color: #0077ff;
-  border: 2px solid #0077ff;
-}
-.btn-secondary:hover {
-  background: #0077ff;
+
+.hero-buttons .btn-primary {
+  background: #ff4d4d;
   color: #fff;
 }
+
+.hero-buttons .btn-primary:hover {
+  background: #ff3333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,77,77,0.3);
+}
+
+.hero-buttons .btn-secondary {
+  background: #fff;
+  color: #333;
+}
+
+.hero-buttons .btn-secondary:hover {
+  background: #f8f8f8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
 .hero-infos {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: 1.5rem;
-  font-size: 1rem;
+  margin-top: 2rem;
+  font-size: 1.1rem;
   flex-wrap: wrap;
   list-style: none;
   padding: 0;
 }
 
-/* Tarifs Fixes */
+.hero-infos li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255,255,255,0.1);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+  transition: transform 0.2s ease;
+}
+
+.hero-infos li:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.15);
+}
+
+.hero-infos li i {
+  font-size: 1.5rem;
+  color: #ffd700;
+}
+
+/* Tarifs Fixes amélioré */
 .tarifs-fixes {
-  background: #fff;
+  background: #f7f9fa;
   padding: 3rem 0 2.5rem 0;
 }
 .tarifs-fixes h2 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  font-weight: 700;
+  font-size: 2.4rem;
+  margin-bottom: 2.5rem;
+  font-weight: 800;
+  color: #232b36;
 }
 .tarifs-cards {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 .tarif-card {
-  background: #f7f9fa;
-  border: 2px solid #eaeaea;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px #0001;
-  padding: 2rem 1.2rem 1.5rem 1.2rem;
-  width: 320px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 4px 24px #0001;
+  padding: 0 0 1.5rem 0;
+  width: 340px;
   text-align: center;
   position: relative;
-  transition: box-shadow 0.2s, border 0.2s;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 3px solid transparent;
+  transition: box-shadow 0.2s, border 0.2s, transform 0.2s;
 }
 .tarif-card.populaire {
-  border: 2px solid #ffd600;
-  box-shadow: 0 4px 20px #ffd60033;
+  border: 3px solid #ffd600;
+  box-shadow: 0 6px 32px #ffd60033;
+}
+.tarif-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px #0077ff22;
 }
 .tarif-card img {
-  border-radius: 10px;
-  height: 110px;
+  border-radius: 22px 22px 0 0;
+  height: 160px;
+  width: 100%;
   object-fit: cover;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+}
+.tarif-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #ffd600;
+  color: #232b36;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.35em 1.1em;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #ffd60033;
+  letter-spacing: 1px;
+  z-index: 2;
 }
 .tarif-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin: 1.2rem 0 0.5rem 0;
+  color: #232b36;
 }
 .tarif-prix {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: #ffd600;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 .tarif-card ul {
   list-style: none;
   padding: 0;
   margin: 0 0 1.2rem 0;
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.08rem;
 }
 .tarif-card ul li {
-  margin-bottom: 0.3rem;
-  padding-left: 1.2em;
+  margin-bottom: 0.5rem;
+  padding-left: 1.6em;
   position: relative;
+  color: #232b36;
 }
 .tarif-card ul li::before {
   content: "✔";
-  color: #0077ff;
+  color: #1ecb4f;
   position: absolute;
   left: 0;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 .btn-tertiary {
-  background: #0077ff;
+  background: #3396ff;
   color: #fff;
   border: none;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.9rem 0;
+  width: 90%;
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px #3396ff22;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .btn-tertiary:hover {
-  background: #005bb5;
+  background: #0077ff;
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px #0077ff33;
 }
 
 /* Formulaire de réservation */
@@ -391,11 +477,15 @@ input:focus {
   .avantages {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   .header-flex {
     flex-direction: column;
     gap: 1rem;
+  }
+  .tarif-card {
+    width: 95%;
+    max-width: 400px;
   }
 }
 @media (max-width: 600px) {
@@ -416,5 +506,41 @@ input:focus {
   }
   .site-header {
     font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+    min-height: 60vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .hero-infos {
+    gap: 1rem;
+  }
+
+  .hero-infos li {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
   }
 }

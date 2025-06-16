@@ -1,16 +1,20 @@
-<section class="hero">
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+{% endblock %}
+
+<section class="hero" style="background-image: url('{{ asset('images/hero-bg.jpg') }}');">
   <div class="container hero-content">
     <h1>Taxi Paris - Prix Fixe Garanti</h1>
     <p class="hero-subtitle">CDG €65 • Orly €55 • Centre Paris €25 • Bagages inclus • Accueil avec pancarte</p>
     <div class="hero-buttons">
-      <a href="tel:0189705051" class="btn btn-primary">📞 Appelez Maintenant</a>
-      <a href="{{ path('reserver') }}" class="btn btn-secondary">Réserver en Ligne</a>
+      <a href="tel:0189705051" class="btn btn-primary"><i class="fas fa-phone"></i> Appelez Maintenant</a>
+      <a href="{{ path('home') }}#reservation" class="btn btn-secondary"><i class="fas fa-calendar-check"></i> Réserver en Ligne</a>
     </div>
     <ul class="hero-infos">
-      <li>Prix fixe</li>
-      <li>Bagages inclus</li>
-      <li>Accueil pancarte</li>
-      <li>Disponible 24/7</li>
+      <li><i class="fas fa-euro-sign"></i> Prix fixe</li>
+      <li><i class="fas fa-suitcase"></i> Bagages inclus</li>
+      <li><i class="fas fa-sign"></i> Accueil pancarte</li>
+      <li><i class="fas fa-clock"></i> Disponible 24/7</li>
     </ul>
   </div>
 </section>
