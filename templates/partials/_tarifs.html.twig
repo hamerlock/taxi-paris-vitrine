@@ -4,10 +4,11 @@
     <div class="tarifs-cards">
       {% for tarif in tarifs %}
         <div class="tarif-card{% if tarif.populaire %} populaire{% endif %}">
-          <img src="{{ asset(tarif.image) }}" alt="{{ tarif.titre }}">
+          <img src="{{ asset(tarif.image) }} ">
           {% if tarif.populaire %}
             <span class="tarif-badge">POPULAIRE</span>
           {% endif %}
+          <h2 class="tarif-titre">{{ tarif.titre }}</h2>
           <div class="tarif-prix">{{ tarif.prix }}</div>
           <ul>
             {% for avantage in tarif.avantages %}
