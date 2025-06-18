@@ -45,17 +45,17 @@ final class HomeController extends AbstractController
 
         $avantages = [
             [
-                'icon' => '/images/airport.svg',
+                'icon' => '/images/airport.jpg',
                 'titre' => 'Spécialiste Aéroports',
                 'description' => 'Transferts CDG, Orly, Beauvais avec accueil personnalisé et tarifs fixes'
             ],
             [
-                'icon' => '/images/driver.svg',
+                'icon' => '/images/driver.jpg',
                 'titre' => 'Chauffeurs Professionnels',
                 'description' => 'Chauffeurs expérimentés avec pancarte nominative, ponctuels et connaissant Paris'
             ],
             [
-                'icon' => '/images/fleet.svg',
+                'icon' => '/images/fleet.jpg',
                 'titre' => 'Flotte Moderne',
                 'description' => 'Véhicules Eco, Confort et Van pour tous vos besoins, entretenus et climatisés'
             ],
