@@ -1,6 +1,7 @@
 <section class="reservation-form" id="reservation">
   <div class="container">
     <h2>Réservez Votre Course</h2>
+    <p style="text-align:center; color:#666; margin-top:-1rem; margin-bottom:2rem; font-size:1.1rem;">Confirmation immédiate – Prix fixe garanti</p>
     <form action="{{ path('reserver_submit') }}" method="post" class="form-grid">
       <!-- Type de véhicule -->
       <div class="form-group">
@@ -16,13 +17,16 @@
         </div>
       </div>
       <!-- Adresses, date, heure, téléphone, passagers -->
-      <input type="text" name="pickup" placeholder="Adresse de prise en charge *" required>
-      <input type="text" name="destination" placeholder="Adresse de destination *" required>
+      <input type="text" name="pickup" placeholder="Adresse de prise en charge (ex: 10 rue de Rivoli, Paris) *" required>
+      <input type="text" name="destination" placeholder="Adresse de destination (ex: Aéroport CDG) *" required>
       <input type="date" name="date" required>
       <input type="time" name="heure" required>
-      <input type="tel" name="telephone" placeholder="Numéro de téléphone *" required>
+      <input type="tel" name="telephone" placeholder="Numéro de téléphone (06...) *" required>
       <input type="number" name="passagers" min="1" max="8" value="1" required>
-      <button type="submit" class="btn btn-danger">Confirmer la Réservation</button>
+      <button type="submit" class="btn btn-danger" style="display:flex; align-items:center; justify-content:center; gap:0.5rem; font-size:1.1rem;">
+        <i class="fas fa-calendar-check"></i> Confirmer la Réservation
+      </button>
     </form>
+    <p style="text-align:center; color:#888; margin-top:1.2rem; font-size:0.98rem;">Nous vous rappelons sous 5 minutes pour confirmer votre réservation.</p>
   </div>
 </section>
