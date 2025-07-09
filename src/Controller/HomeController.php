@@ -98,7 +98,7 @@ final class HomeController extends AbstractController
     }
 
     #[Route('/reserver/{type}', name: 'reserver')]
-    public function reserver(string $type = null): Response
+    public function reserver(string $type = ''): Response
     {
         // Pour l'instant, tu peux juste afficher une page de test
         return $this->render('reserver.html.twig', [
