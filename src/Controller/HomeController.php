@@ -64,18 +64,21 @@ final class HomeController extends AbstractController
         $vehicle_types = [
             [
                 'value' => 'eco',
-                'label' => 'Éco (1-4 pers.)',
+                'label' => 'Éco',
                 'image' => '/images/eco.png',
+                'capacity' => 4,
             ],
             [
                 'value' => 'confort',
-                'label' => 'Confort (1-4 pers.)',
+                'label' => 'Confort',
                 'image' => '/images/confort.png',
+                'capacity' => 4,
             ],
             [
                 'value' => 'van',
-                'label' => 'Van (1-8 pers.)',
+                'label' => 'Van',
                 'image' => '/images/van.png',
+                'capacity' => 8,
             ],
         ];
 

@@ -591,3 +591,49 @@ input:focus {
     padding: 0.6rem 1.2rem;
   }
 }
+
+.vehicle-type-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  transition: box-shadow 0.2s, border 0.2s;
+  background: #fff;
+  max-width: 320px;
+  min-width: 0;
+  overflow: visible;
+  white-space: normal;
+  flex-wrap: wrap;
+}
+.vehicle-type-option:hover, .vehicle-type-option:has(input[type="radio"]:checked) {
+  border-color: #dc3545;
+  box-shadow: 0 2px 8px #dc354522;
+}
+.vehicle-type-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-right: 0.5rem;
+}
+.vehicle-type-label {
+  font-weight: 600;
+}
+.vehicle-type-capacity {
+  color: #888;
+  font-size: 0.98rem;
+  margin-left: 0.5rem;
+  white-space: normal;
+  text-overflow: unset;
+  overflow: visible;
+  max-width: none;
+  display: inline;
+}
+.vehicle-type-option input[type="radio"] {
+  accent-color: #dc3545;
+  margin-right: 0.5rem;
+}

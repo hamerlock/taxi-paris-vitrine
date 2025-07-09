@@ -8,10 +8,11 @@
         <label>Type de véhicule</label>
         <div class="vehicle-types">
           {% for type in vehicle_types %}
-            <label>
+            <label class="vehicle-type-option">
               <input type="radio" name="vehicle_type" value="{{ type.value }}" {% if loop.first %}checked{% endif %}>
-              <img src="{{ asset(type.image) }}" alt="{{ type.label }}">
-              {{ type.label }}
+              <img src="{{ asset(type.image) }}" alt="{{ type.label }}" class="vehicle-type-img">
+              <span class="vehicle-type-label">{{ type.label }}</span>
+              <span class="vehicle-type-capacity">({{ type.capacity }} pers.)</span>
             </label>
           {% endfor %}
         </div>
