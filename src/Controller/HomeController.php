@@ -6,11 +6,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Service\AddressGeocoder;
 
+/**
+ * Contrôleur principal de l'application Taxi Paris.
+ * Gère l'affichage de la page d'accueil, la réservation, l'autocomplétion d'adresses, etc.
+ */
 final class HomeController extends AbstractController
 {
+    /**
+     * Affiche la page d'accueil avec les tarifs, avantages, types de véhicules et le formulaire de réservation.
+     */
     #[Route('/', name: 'home')]
-    public function home(): Response
+    public function home(Request $request): Response
     {
         // Données bidon pour la démo
         $tarifs = [
@@ -82,6 +91,10 @@ final class HomeController extends AbstractController
             ],
         ];
 
+        // Formulaire de réservation
+        $form = $this->createForm(\App\Form\TripType::class);
+        $formView = $form->createView();
+
         // Gestion d'une erreur simulée
         $error = null;
         try {
@@ -97,9 +110,13 @@ final class HomeController extends AbstractController
             'avantages' => $avantages,
             'error' => $error,
             'vehicle_types' => $vehicle_types,
+            'reservation_form' => $formView,
         ]);
     }
 
+    /**
+     * Affiche une page de test pour la réservation selon le type de véhicule.
+     */
     #[Route('/reserver/{type}', name: 'reserver')]
     public function reserver(string $type = ''): Response
     {
@@ -109,19 +126,48 @@ final class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * API d'autocomplétion d'adresses pour le formulaire de réservation.
+     * Appelle le service AddressGeocoder pour obtenir des suggestions d'adresses.
+     * Retourne les résultats au format attendu par Symfony UX Autocomplete.
+     */
+    #[Route('/api/addresses', name: 'api_addresses', methods: ['GET'])]
+    public function autocomplete(Request $request, AddressGeocoder $geocoder): JsonResponse
+    {
+        // Récupère le terme de recherche depuis la requête GET (?query=...)
+        $term = $request->query->get('query', '');
+        // Appelle le service pour obtenir les suggestions d'adresses
+        $results = $geocoder->autocomplete($term, 10);
+        // Retourne la réponse JSON
+        return $this->json([
+            'results' => $results
+        ]);
+    }
+
+
+    /**
+     * Traite la soumission du formulaire de réservation.
+     * Si le formulaire est valide, affiche un message de succès.
+     */
     #[Route('/reserver/submit', name: 'reserver_submit', methods: ['POST'])]
     public function reserverSubmit(Request $request): Response
     {
-        // Pour l'instant, on récupère les données du formulaire
-        $data = $request->request->all();
+        $form = $this->createForm(\App\Form\TripType::class);
+        $form->handleRequest($request);
 
-        // Ici tu pourrais traiter la réservation, envoyer un email, etc.
-        // Pour la démo, on affiche juste un message de succès
-        $success = 'Votre demande de réservation a bien été envoyée !';
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $success = 'Votre demande de réservation a bien été envoyée !';
+            return $this->render('index.html.twig', [
+                'success' => $success,
+                'data' => $data,
+                'reservation_form' => $form->createView(),
+            ]);
+        }
 
-        return $this->render('reserver.html.twig', [
-            'success' => $success,
-            'data' => $data,
+        // Si le formulaire n'est pas valide ou pas soumis, on réaffiche avec erreurs
+        return $this->render('index.html.twig', [
+            'reservation_form' => $form->createView(),
         ]);
     }
 }
