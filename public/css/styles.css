@@ -373,6 +373,37 @@ img {
   margin-bottom: 2rem;
   font-weight: 700;
 }
+
+/* Ajout : styles spécifiques pour la réservation */
+.reservation-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.reservation-subtitle {
+  text-align: center;
+  color: #666;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.reservation-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.reservation-info {
+  text-align: center;
+  color: #888;
+  margin-top: 1.2rem;
+  font-size: 0.98rem;
+}
 .form-grid {
   max-width: 600px;
   margin: 0 auto;
@@ -592,25 +623,33 @@ input:focus {
   }
 }
 
+/* Ajout ou amélioration pour le rendu des types de véhicule générés par Symfony Form */
+.vehicle-types {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
 .vehicle-type-option {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
   cursor: pointer;
-  border: 1px solid #eee;
+  border: 1.5px solid #eee;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   margin-right: 1rem;
   margin-bottom: 0.5rem;
-  transition: box-shadow 0.2s, border 0.2s;
   background: #fff;
-  max-width: 320px;
-  min-width: 0;
-  overflow: visible;
-  white-space: normal;
-  flex-wrap: wrap;
+  transition: box-shadow 0.2s, border 0.2s;
+  box-shadow: 0 2px 8px #0001;
 }
-.vehicle-type-option:hover, .vehicle-type-option:has(input[type="radio"]:checked) {
+.vehicle-type-option input[type="radio"] {
+  accent-color: #dc3545;
+  margin-right: 0.5rem;
+}
+.vehicle-type-option:hover, .vehicle-type-option input[type="radio"]:checked + img {
   border-color: #dc3545;
   box-shadow: 0 2px 8px #dc354522;
 }
@@ -633,7 +672,25 @@ input:focus {
   max-width: none;
   display: inline;
 }
-.vehicle-type-option input[type="radio"] {
-  accent-color: #dc3545;
-  margin-right: 0.5rem;
+
+.reservation-form-card {
+  background: #f7f9fa;
+  border-radius: 22px;
+  box-shadow: 0 4px 24px #0002;
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 1250px;
+  margin: 0 auto 2.5rem auto;
+  border: 1.5px solid #eaeaea;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+.reservation-form-card:hover {
+  box-shadow: 0 8px 32px #0077ff22;
+  border-color: #0077ff33;
+}
+
+@media (max-width: 600px) {
+  .reservation-form-card {
+    padding: 1.2rem 0.5rem;
+  }
 }
