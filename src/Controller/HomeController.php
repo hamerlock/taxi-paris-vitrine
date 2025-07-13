@@ -21,7 +21,7 @@ final class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function home(Request $request): Response
     {
-        // Données bidon pour la démo
+        
         $tarifs = [
             [
                 'titre' => 'Paris ↔ CDG',
@@ -95,20 +95,11 @@ final class HomeController extends AbstractController
         $form = $this->createForm(\App\Form\TripType::class);
         $formView = $form->createView();
 
-        // Gestion d'une erreur simulée
-        $error = null;
-        try {
-            // Simule une erreur (ex: accès à une ressource externe)
-            // throw new \Exception("Erreur de connexion à la base de données !");
-        } catch (\Exception $e) {
-            $error = $e->getMessage();
-        }
 
         return $this->render('index.html.twig', [
             'controller_name' => 'PageController',
             'tarifs' => $tarifs,
             'avantages' => $avantages,
-            'error' => $error,
             'vehicle_types' => $vehicle_types,
             'reservation_form' => $formView,
         ]);
