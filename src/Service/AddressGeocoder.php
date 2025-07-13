@@ -3,6 +3,12 @@ namespace App\Service;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+// Source API : https://adresse.data.gouv.fr/api-doc/adresse
+// Limite officielle : 50 requêtes par seconde et par IP (voir https://geo.api.gouv.fr/faq)
+// Si la limite est dépassée, erreur HTTP 429 (Too Many Requests) et blocage temporaire (5s)
+// Service public gratuit, documentation complète sur https://adresse.data.gouv.fr/api-doc/adresse
+
+
 /**
  * Service permettant d'effectuer de la géolocalisation d'adresses via l'API adresse.data.gouv.fr.
  * Utilisé pour fournir des suggestions d'adresses (autocomplétion) dans les formulaires.
