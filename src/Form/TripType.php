@@ -1,7 +1,8 @@
 <?php
-// src/Form/TripType.php
+
 namespace App\Form;
 
+use App\DTO\TripDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -10,17 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\UX\Autocomplete\Form\AsEntityAutocompleteField;
-use Symfony\UX\Autocomplete\Form\BaseEntityAutocompleteType;
-
-#[AsEntityAutocompleteField]
-class TripAddressAutocompleteField extends AbstractType
-{
-    public function getParent(): string
-    {
-        return BaseEntityAutocompleteType::class;
-    }
-}
 
 class TripType extends AbstractType
 {
@@ -45,6 +35,7 @@ class TripType extends AbstractType
                     'data-symfony--ux-autocomplete--autocomplete-max-items-value' => '1',
                     'data-symfony--ux-autocomplete--autocomplete-close-after-select-value' => 'true',
                 ],
+                'empty_data' => '',
             ])
             ->add('dropoff', ChoiceType::class, [
                 'label' => 'Adresse de destination',
@@ -54,6 +45,7 @@ class TripType extends AbstractType
                     'data-symfony--ux-autocomplete--autocomplete-max-items-value' => '1',
                     'data-symfony--ux-autocomplete--autocomplete-close-after-select-value' => 'true',
                 ],
+                'empty_data' => '',
             ])
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
@@ -87,7 +79,7 @@ class TripType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            // 'data_class' => Trip::class, ou rien si tu n’as pas d’entité
+            'data_class' => TripDTO::class,
         ]);
     }
 }

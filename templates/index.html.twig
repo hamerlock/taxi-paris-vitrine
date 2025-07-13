@@ -44,10 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
     vehicleTypeInputs.forEach(input => {
         input.addEventListener('change', updatePassagersValidation);
     });
-    
+
+    {% if reservation_form.vars.errors|length > 0 or reservation_form.vars.valid == false %}
+        var element = document.getElementById('reservation');
+        if (element) {
+               element.scrollIntoView({ behavior: 'smooth' });
+            }
+    {% endif %}
+  
     // Initialiser la validation au chargement de la page
     updatePassagersValidation();
 });
+
 </script>
 
 {% endblock %}
