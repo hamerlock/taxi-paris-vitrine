@@ -11,4 +11,43 @@
 {% include 'partials/_cta.html.twig' %}
 {% include 'partials/_footer.html.twig' %}
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const vehicleTypeInputs = document.querySelectorAll('input[name="{{ reservation_form.vehicle_type.vars.full_name }}"]');
+    const passagersInput = document.querySelector('input[name="{{ reservation_form.passagers.vars.full_name }}"]');
+    
+    // Fonction pour mettre à jour la validation du nombre de passagers
+    function updatePassagersValidation() {
+        const selectedVehicle = document.querySelector('input[name="{{ reservation_form.vehicle_type.vars.full_name }}"]:checked');
+        
+        if (selectedVehicle) {
+            const maxCapacity = parseInt(selectedVehicle.getAttribute('data-capacity'));
+            
+            // Mettre à jour les attributs min et max
+            passagersInput.setAttribute('min', '1');
+            passagersInput.setAttribute('max', maxCapacity);
+            
+            // Mettre à jour le placeholder pour indiquer la capacité
+            passagersInput.setAttribute('placeholder', `1 à ${maxCapacity} passagers`);
+            
+            // Vérifier si la valeur actuelle dépasse la capacité
+            const currentValue = parseInt(passagersInput.value);
+            if (currentValue > maxCapacity) {
+                passagersInput.value = maxCapacity;
+            } else if (currentValue < 1) {
+                passagersInput.value = 1;
+            }
+        }
+    }
+
+    // Écouter les changements sur les types de véhicules
+    vehicleTypeInputs.forEach(input => {
+        input.addEventListener('change', updatePassagersValidation);
+    });
+    
+    // Initialiser la validation au chargement de la page
+    updatePassagersValidation();
+});
+</script>
+
 {% endblock %}

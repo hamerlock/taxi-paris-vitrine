@@ -15,6 +15,7 @@
                   type="radio"
                   name="{{ reservation_form.vehicle_type.vars.full_name }}"
                   value="{{ type.value }}"
+                  data-capacity="{{ type.capacity }}"
                   {% if selected == type.value %}checked{% endif %}
                   required
                 >
