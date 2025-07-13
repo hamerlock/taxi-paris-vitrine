@@ -15,7 +15,7 @@
               <li>{{ avantage }}</li>
             {% endfor %}
           </ul>
-          <a href="{{ path('reserver', {'type': tarif.slug}) }}" class="btn btn-tertiary">Réserver {{ tarif.cta }}</a>
+          <a href="{{ path('home') }}#reservation" class="btn btn-tertiary">Réserver {{ tarif.cta }}</a>
         </div>
       {% endfor %}
     </div>

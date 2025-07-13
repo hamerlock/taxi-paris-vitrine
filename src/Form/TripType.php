@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\UX\Autocomplete\Form\AsEntityAutocompleteField;
 use Symfony\UX\Autocomplete\Form\BaseEntityAutocompleteType;
 
@@ -38,18 +37,22 @@ class TripType extends AbstractType
                 'multiple' => false,
                 'label' => 'Type de véhicule',
             ])
-            ->add('pickup', TextType::class, [
+            ->add('pickup', ChoiceType::class, [
                 'label' => 'Adresse de prise en charge',
                 'attr' => [
                     'data-controller' => 'symfony--ux-autocomplete--autocomplete',
                     'data-symfony--ux-autocomplete--autocomplete-url-value' => '/api/addresses',
+                    'data-symfony--ux-autocomplete--autocomplete-max-items-value' => '1',
+                    'data-symfony--ux-autocomplete--autocomplete-close-after-select-value' => 'true',
                 ],
             ])
-            ->add('dropoff', TextType::class, [
+            ->add('dropoff', ChoiceType::class, [
                 'label' => 'Adresse de destination',
                 'attr' => [
                     'data-controller' => 'symfony--ux-autocomplete--autocomplete',
                     'data-symfony--ux-autocomplete--autocomplete-url-value' => '/api/addresses',
+                    'data-symfony--ux-autocomplete--autocomplete-max-items-value' => '1',
+                    'data-symfony--ux-autocomplete--autocomplete-close-after-select-value' => 'true',
                 ],
             ])
             ->add('date', DateType::class, [
@@ -68,6 +71,14 @@ class TripType extends AbstractType
                 'attr' => [
                     'min' => 1,
                     'max' => 8,
+                    'placeholder' => '1 à 8 passagers',
+                ],
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\Range([
+                        'min' => 1,
+                        'max' => 8,
+                        'notInRangeMessage' => 'Le nombre de passagers doit être entre {{ min }} et {{ max }}',
+                    ]),
                 ],
             ])
         ;
