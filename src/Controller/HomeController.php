@@ -106,18 +106,6 @@ final class HomeController extends AbstractController
     }
 
     /**
-     * Affiche une page de test pour la réservation selon le type de véhicule.
-     */
-    #[Route('/reserver/{type}', name: 'reserver')]
-    public function reserver(string $type = ''): Response
-    {
-        // Pour l'instant, tu peux juste afficher une page de test
-        return $this->render('reserver.html.twig', [
-            'type' => $type,
-        ]);
-    }
-
-    /**
      * API d'autocomplétion d'adresses pour le formulaire de réservation.
      * Appelle le service AddressGeocoder pour obtenir des suggestions d'adresses.
      * Retourne les résultats au format attendu par Symfony UX Autocomplete.
