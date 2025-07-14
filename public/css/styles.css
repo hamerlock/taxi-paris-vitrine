@@ -715,3 +715,15 @@ input:focus {
     padding: 1.2rem 0.5rem;
   }
 }
+/* Partie erreurs formulaires*/
+.reservation-form ul {
+  padding-left: 1.2em;
+  margin: 0.25em 0;
+  color: #d32f2f;
+  font-size: 0.95em;
+  font-weight: bold;
+  list-style: disc inside;
+}
+.reservation-form ul li {
+  margin-bottom: 0.2em;
+}

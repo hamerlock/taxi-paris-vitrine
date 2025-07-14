@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TripType extends AbstractType
 {
@@ -27,25 +28,11 @@ class TripType extends AbstractType
                 'multiple' => false,
                 'label' => 'Type de véhicule',
             ])
-            ->add('pickup', ChoiceType::class, [
+            ->add('pickup', TextType::class, [
                 'label' => 'Adresse de prise en charge',
-                'attr' => [
-                    'data-controller' => 'symfony--ux-autocomplete--autocomplete',
-                    'data-symfony--ux-autocomplete--autocomplete-url-value' => '/api/addresses',
-                    'data-symfony--ux-autocomplete--autocomplete-max-items-value' => '1',
-                    'data-symfony--ux-autocomplete--autocomplete-close-after-select-value' => 'true',
-                ],
-                'empty_data' => '',
             ])
-            ->add('dropoff', ChoiceType::class, [
+            ->add('dropoff', TextType::class, [
                 'label' => 'Adresse de destination',
-                'attr' => [
-                    'data-controller' => 'symfony--ux-autocomplete--autocomplete',
-                    'data-symfony--ux-autocomplete--autocomplete-url-value' => '/api/addresses',
-                    'data-symfony--ux-autocomplete--autocomplete-max-items-value' => '1',
-                    'data-symfony--ux-autocomplete--autocomplete-close-after-select-value' => 'true',
-                ],
-                'empty_data' => '',
             ])
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
@@ -80,6 +67,7 @@ class TripType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => TripDTO::class,
+            'csrf_protection' => false,
         ]);
     }
 }
