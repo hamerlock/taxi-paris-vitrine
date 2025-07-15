@@ -2,6 +2,13 @@
 
 {% block body %}
 
+{# Affichage du message de confirmation de réservation #}
+{% for message in app.flashes('success') %}
+    <div class="alert-success-reservation" role="alert">
+        <i class="fas fa-check-circle"></i> {{ message }}
+    </div>
+{% endfor %}
+
 {% include 'partials/_header.html.twig' %}
 {% include 'partials/_hero.html.twig' %}
 <div class="section-separator"></div>
@@ -44,10 +51,18 @@ document.addEventListener('DOMContentLoaded', function() {
     vehicleTypeInputs.forEach(input => {
         input.addEventListener('change', updatePassagersValidation);
     });
-    
+
+    {% if reservation_form.vars.errors|length > 0 or reservation_form.vars.valid == false %}
+        var element = document.getElementById('reservation');
+        if (element) {
+               element.scrollIntoView({ behavior: 'smooth' });
+            }
+    {% endif %}
+  
     // Initialiser la validation au chargement de la page
     updatePassagersValidation();
 });
+
 </script>
 
 {% endblock %}
