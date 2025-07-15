@@ -77,7 +77,7 @@ final class HomeController extends AbstractController
                     ->htmlTemplate('emails/reservation.html.twig')
                     ->context(['trip' => $data]);
             $mailer->send($mail);
-            $this->addFlash('success', 'Votre demande de réservation a bien été envoyée !');
+            $this->addFlash('success', 'flash.reservation_success');
             return $this->redirectToRoute('home');
         }
         
@@ -97,31 +97,46 @@ final class HomeController extends AbstractController
     {
         return [
             [
-                'titre' => 'Paris ↔ CDG',
+                'titre' => 'tarif.cdg.title',
                 'prix' => '65€',
-                'avantages' => ['Prix fixe garanti', 'Bagages inclus', 'Accueil avec pancarte', '4 passagers max'],
+                'avantages' => [
+                    'tarif.advantage.fixed',
+                    'tarif.advantage.luggage',
+                    'tarif.advantage.sign',
+                    'tarif.advantage.max4',
+                ],
                 'image' => '/images/cdg.jpg',
                 'populaire' => true,
                 'slug' => 'cdg',
-                'cta' => 'CDG'
+                'cta' => 'tarif.cta.cdg'
             ],
             [
-                'titre' => 'Paris ↔ Orly',
+                'titre' => 'tarif.orly.title',
                 'prix' => '55€',
-                'avantages' => ['Prix fixe garanti', 'Bagages inclus', 'Accueil avec pancarte', '4 passagers max'],
+                'avantages' => [
+                    'tarif.advantage.fixed',
+                    'tarif.advantage.luggage',
+                    'tarif.advantage.sign',
+                    'tarif.advantage.max4',
+                ],
                 'image' => '/images/orly.jpg',
                 'populaire' => false,
                 'slug' => 'orly',
-                'cta' => 'Orly'
+                'cta' => 'tarif.cta.orly'
             ],
             [
-                'titre' => 'Paris Centre',
+                'titre' => 'tarif.centre.title',
                 'prix' => 'À partir de 25€',
-                'avantages' => ['Tarifs transparents', 'Pas de frais cachés', 'Devis immédiat', 'Service rapide'],
+                'avantages' => [
+                    'tarif.advantage.transparent',
+                    'tarif.advantage.nofees',
+                    'tarif.advantage.instant',
+                    'tarif.advantage.fast',
+                ],
                 'image' => '/images/paris.jpg',
                 'populaire' => false,
                 'slug' => 'centre',
-                'cta' => 'Course'
+                'cta' => 'tarif.cta.centre'
             ],
         ];
     }
@@ -134,18 +149,18 @@ final class HomeController extends AbstractController
         return [
             [
                 'icon' => '/images/airport.jpg',
-                'titre' => 'Spécialiste Aéroports',
-                'description' => 'Transferts CDG, Orly, Beauvais avec accueil personnalisé et tarifs fixes'
+                'titre' => 'why.specialist',
+                'description' => 'why.specialist_desc'
             ],
             [
                 'icon' => '/images/driver.jpg',
-                'titre' => 'Chauffeurs Professionnels',
-                'description' => 'Chauffeurs expérimentés avec pancarte nominative, ponctuels et connaissant Paris'
+                'titre' => 'why.pro_drivers',
+                'description' => 'why.pro_drivers_desc'
             ],
             [
                 'icon' => '/images/fleet.jpg',
-                'titre' => 'Flotte Moderne',
-                'description' => 'Véhicules Eco, Confort et Van pour tous vos besoins, entretenus et climatisés'
+                'titre' => 'why.fleet',
+                'description' => 'why.fleet_desc'
             ],
         ];
     }

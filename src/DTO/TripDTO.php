@@ -9,38 +9,38 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class TripDTO
 {
-    #[Assert\NotBlank(message: 'Veuillez sélectionner un type de véhicule')]
-    #[Assert\Choice(choices: ['eco', 'confort', 'van'], message: 'Type de véhicule invalide')]
+    #[Assert\NotBlank(message: 'dto.error.vehicle_type_blank')]
+    #[Assert\Choice(choices: ['eco', 'confort', 'van'], message: 'dto.error.vehicle_type_invalid')]
     private string $vehicle_type = 'eco';
 
-    #[Assert\NotBlank(message: 'Veuillez saisir l\'adresse de prise en charge')]
-    #[Assert\Length(min: 3, max: 255, minMessage: 'L\'adresse de prise en charge doit contenir au moins {{ limit }} caractères', maxMessage: 'L\'adresse de prise en charge ne peut pas dépasser {{ limit }} caractères')]
+    #[Assert\NotBlank(message: 'dto.error.pickup_blank')]
+    #[Assert\Length(min: 3, max: 255, minMessage: 'dto.error.pickup_min', maxMessage: 'dto.error.pickup_max')]
     private ?string $pickup = null;
 
-    #[Assert\NotBlank(message: 'Veuillez saisir l\'adresse de destination')]
-    #[Assert\Length(min: 3, max: 255, minMessage: 'L\'adresse de destination doit contenir au moins {{ limit }} caractères', maxMessage: 'L\'adresse de destination ne peut pas dépasser {{ limit }} caractères')]
+    #[Assert\NotBlank(message: 'dto.error.dropoff_blank')]
+    #[Assert\Length(min: 3, max: 255, minMessage: 'dto.error.dropoff_min', maxMessage: 'dto.error.dropoff_max')]
     private ?string $dropoff = null;
 
-    #[Assert\NotBlank(message: 'Veuillez sélectionner une date')]
-    #[Assert\GreaterThan('today', message: 'La date doit être ultérieure à aujourd\'hui')]
+    #[Assert\NotBlank(message: 'dto.error.date_blank')]
+    #[Assert\GreaterThan('today', message: 'dto.error.date_future')]
     private \DateTimeInterface $date;
 
-    #[Assert\NotBlank(message: 'Veuillez sélectionner une heure')]
+    #[Assert\NotBlank(message: 'dto.error.heure_blank')]
     private \DateTimeInterface $heure;
 
-    #[Assert\NotBlank(message: 'Veuillez saisir votre numéro de téléphone')]
-    #[Assert\Regex(pattern: '/^(\+33|0)[1-9](\d{8})$/', message: 'Veuillez saisir un numéro de téléphone français valide')]
+    #[Assert\NotBlank(message: 'dto.error.telephone_blank')]
+    #[Assert\Regex(pattern: '/^(\+33|0)[1-9](\d{8})$/', message: 'dto.error.telephone_invalid')]
     private string $telephone = '';
 
-    #[Assert\NotBlank(message: 'Veuillez saisir votre adresse e-mail')]
-    #[Assert\Email(message: 'Veuillez saisir une adresse e-mail valide')]
+    #[Assert\NotBlank(message: 'dto.error.email_blank')]
+    #[Assert\Email(message: 'dto.error.email_invalid')]
     private ?string $email = null;
 
-    #[Assert\NotBlank(message: 'Veuillez saisir votre nom')]
+    #[Assert\NotBlank(message: 'dto.error.nom_blank')]
     private ?string $nom = null;
 
-    #[Assert\NotBlank(message: 'Veuillez indiquer le nombre de passagers')]
-    #[Assert\Range(min: 1, max: 8, notInRangeMessage: 'Le nombre de passagers doit être entre {{ min }} et {{ max }}')]
+    #[Assert\NotBlank(message: 'dto.error.passagers_blank')]
+    #[Assert\Range(min: 1, max: 8, notInRangeMessage: 'dto.error.passagers_range')]
     private int $passagers = 1;
 
     public function __construct()
