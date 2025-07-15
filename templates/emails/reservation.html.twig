@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Nouvelle réservation{% endblock %}
+{% block body %}
+    <h2>Nouvelle demande de réservation</h2>
+    <ul>
+        <li><strong>Nom :</strong> {{ trip.nom ?? 'Non renseigné' }}</li>
+        <li><strong>Email :</strong> {{ trip.email }}</li>
+        <li><strong>Téléphone :</strong> {{ trip.telephone }}</li>
+        <li><strong>Adresse de prise en charge :</strong> {{ trip.pickup }}</li>
+        <li><strong>Adresse de destination :</strong> {{ trip.dropoff }}</li>
+        <li><strong>Date :</strong> {{ trip.date ? trip.date|date('d/m/Y') : '' }}</li>
+        <li><strong>Heure :</strong> {{ trip.heure ? trip.heure|date('H:i') : '' }}</li>
+        <li><strong>Type de véhicule :</strong> {{ trip.getVehicleTypeLabel ? trip.getVehicleTypeLabel() : trip.vehicle_type }}</li>
+        <li><strong>Nombre de passagers :</strong> {{ trip.passagers }}</li>
+    </ul>
+    <p><strong>Résumé :</strong> {{ trip.getSummary ? trip.getSummary() : '' }}</p>
+{% endblock %}

@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Service\AddressGeocoder;
 use App\DTO\TripDTO;
 use App\Form\TripType;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\MailerInterface;
 
 /**
  * Contrôleur principal de l'application Taxi Paris.
@@ -61,13 +63,20 @@ final class HomeController extends AbstractController
      * Si le formulaire est valide, affiche un message de succès.
      */
     #[Route('/reserver/submit', name: 'reserver_submit', methods: ['POST'])]
-    public function reserverSubmit(Request $request): Response
+    public function reserverSubmit(Request $request, MailerInterface $mailer): Response
     {
         $data = new TripDTO();
         $form = $this->createForm(TripType::class, $data);
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
+            $mail = (new TemplatedEmail())
+                    ->to("taxiparis@taxiparis.com")
+                    ->from($data->getEmail())
+                    ->subject('Nouvelle réservation : le ' . $data->getDateTime())
+                    ->htmlTemplate('emails/reservation.html.twig')
+                    ->context(['trip' => $data]);
+            $mailer->send($mail);
             $this->addFlash('success', 'Votre demande de réservation a bien été envoyée !');
             return $this->redirectToRoute('home');
         }
