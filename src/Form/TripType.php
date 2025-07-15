@@ -50,6 +50,10 @@ class TripType extends AbstractType
                 'label' => 'Adresse e-mail',
                 'required' => true,
             ])
+            ->add('nom', TextType::class, [
+                'label' => 'nom',
+                'required' => true,
+            ])
             ->add('passagers', IntegerType::class, [
                 'label' => 'Nombre de passagers',
                 'attr' => [
