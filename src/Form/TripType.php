@@ -51,7 +51,7 @@ class TripType extends AbstractType
                 'required' => true,
             ])
             ->add('nom', TextType::class, [
-                'label' => 'nom',
+                'label' => 'Nom',
                 'required' => true,
             ])
             ->add('passagers', IntegerType::class, [

@@ -178,11 +178,11 @@ class TripDTO
     /**
      * Retourne la date et l'heure combinées
      */
-    public function getDateTime(): \DateTimeInterface
+    public function getDateTime(): string
     {
         $dateString = $this->date->format('Y-m-d');
         $timeString = $this->heure->format('H:i:s');
-        return new \DateTime($dateString . ' ' . $timeString);
+        return $dateString . ' à ' . $timeString;
     }
 
     /**
