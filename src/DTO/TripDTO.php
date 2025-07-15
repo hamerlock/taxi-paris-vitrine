@@ -32,6 +32,10 @@ class TripDTO
     #[Assert\Regex(pattern: '/^(\+33|0)[1-9](\d{8})$/', message: 'Veuillez saisir un numéro de téléphone français valide')]
     private string $telephone = '';
 
+    #[Assert\NotBlank(message: 'Veuillez saisir votre adresse e-mail')]
+    #[Assert\Email(message: 'Veuillez saisir une adresse e-mail valide')]
+    private ?string $email = null;
+
     #[Assert\NotBlank(message: 'Veuillez indiquer le nombre de passagers')]
     #[Assert\Range(min: 1, max: 8, notInRangeMessage: 'Le nombre de passagers doit être entre {{ min }} et {{ max }}')]
     private int $passagers = 1;
@@ -106,6 +110,17 @@ class TripDTO
     public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
         return $this;
     }
 
