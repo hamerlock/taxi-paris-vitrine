@@ -1,21 +1,21 @@
 <section class="tarifs-fixes" id="tarifs">
   <div class="container">
-    <h2>Nos Tarifs Fixes</h2>
+    <h2>{{ 'tarifs.title'|trans }}</h2>
     <div class="tarifs-cards">
       {% for tarif in tarifs %}
         <div class="tarif-card{% if tarif.populaire %} populaire{% endif %}">
           <img src="{{ asset(tarif.image) }} ">
           {% if tarif.populaire %}
-            <span class="tarif-badge">POPULAIRE</span>
+            <span class="tarif-badge">{{ 'tarifs.populaire'|trans }}</span>
           {% endif %}
-          <h2 class="tarif-titre">{{ tarif.titre }}</h2>
+          <h2 class="tarif-titre">{{ tarif.titre|trans }}</h2>
           <div class="tarif-prix">{{ tarif.prix }}</div>
           <ul>
             {% for avantage in tarif.avantages %}
-              <li>{{ avantage }}</li>
+              <li>{{ avantage|trans }}</li>
             {% endfor %}
           </ul>
-          <a href="{{ path('home') }}#reservation" class="btn btn-tertiary">Réserver {{ tarif.cta }}</a>
+          <a href="{{ path('home', {'_locale': app.request.locale}) }}#reservation" class="btn btn-tertiary">{{ 'tarifs.reserver'|trans }} {{ tarif.cta|trans }}</a>
         </div>
       {% endfor %}
     </div>

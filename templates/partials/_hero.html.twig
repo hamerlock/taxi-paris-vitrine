@@ -4,17 +4,17 @@
 
 <section class="hero" style="background-image: url('{{ asset('images/hero-bg.jpg') }}');">
   <div class="container hero-content">
-    <h1>Taxi Paris - Prix Fixe Garanti</h1>
-    <p class="hero-subtitle">CDG €65 • Orly €55 • Centre Paris €25 • Bagages inclus • Accueil avec pancarte</p>
+    <h1>{{ 'hero.title'|trans }}</h1>
+    <p class="hero-subtitle">{{ 'hero.subtitle'|trans }}</p>
     <div class="hero-buttons">
-      <a href="tel:0189705051" class="btn btn-primary"><i class="fas fa-phone"></i> Appelez Maintenant</a>
-      <a href="{{ path('home') }}#reservation" class="btn btn-secondary"><i class="fas fa-calendar-check"></i> Réserver en Ligne</a>
+      <a href="tel:0189705051" class="btn btn-primary"><i class="fas fa-phone"></i> {{ 'hero.call_now'|trans }}</a>
+      <a href="{{ path('home', {'_locale': app.request.locale}) }}#reservation" class="btn btn-secondary"><i class="fas fa-calendar-check"></i> {{ 'hero.book_online'|trans }}</a>
     </div>
     <ul class="hero-infos">
-      <li><i class="fas fa-euro-sign"></i> Prix fixe</li>
-      <li><i class="fas fa-suitcase"></i> Bagages inclus</li>
-      <li><i class="fas fa-sign"></i> Accueil pancarte</li>
-      <li><i class="fas fa-clock"></i> Disponible 24/7</li>
+      <li><i class="fas fa-euro-sign"></i> {{ 'hero.fixed_price'|trans }}</li>
+      <li><i class="fas fa-suitcase"></i> {{ 'hero.luggage_included'|trans }}</li>
+      <li><i class="fas fa-sign"></i> {{ 'hero.sign_greeting'|trans }}</li>
+      <li><i class="fas fa-clock"></i> {{ 'hero.available'|trans }}</li>
     </ul>
   </div>
 </section>

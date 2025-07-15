@@ -21,51 +21,51 @@ class TripType extends AbstractType
         $builder
             ->add('vehicle_type', ChoiceType::class, [
                 'choices' => [
-                    'Éco' => 'eco',
-                    'Confort' => 'confort',
-                    'Van' => 'van',
+                    'form.choice.eco' => 'eco',
+                    'form.choice.confort' => 'confort',
+                    'form.choice.van' => 'van',
                 ],
                 'expanded' => true,
                 'multiple' => false,
-                'label' => 'Type de véhicule',
+                'label' => 'form.label.vehicle_type',
             ])
             ->add('pickup', TextType::class, [
-                'label' => 'Adresse de prise en charge',
+                'label' => 'form.label.pickup',
             ])
             ->add('dropoff', TextType::class, [
-                'label' => 'Adresse de destination',
+                'label' => 'form.label.dropoff',
             ])
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'Date',
+                'label' => 'form.label.date',
             ])
             ->add('heure', TimeType::class, [
                 'widget' => 'single_text',
-                'label' => 'Heure',
+                'label' => 'form.label.heure',
             ])
             ->add('telephone', TelType::class, [
-                'label' => 'Numéro de téléphone',
+                'label' => 'form.label.telephone',
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Adresse e-mail',
+                'label' => 'form.label.email',
                 'required' => true,
             ])
             ->add('nom', TextType::class, [
-                'label' => 'Nom',
+                'label' => 'form.label.nom',
                 'required' => true,
             ])
             ->add('passagers', IntegerType::class, [
-                'label' => 'Nombre de passagers',
+                'label' => 'form.label.passagers',
                 'attr' => [
                     'min' => 1,
                     'max' => 8,
-                    'placeholder' => '1 à 8 passagers',
+                    'placeholder' => 'form.placeholder.passagers',
                 ],
                 'constraints' => [
                     new \Symfony\Component\Validator\Constraints\Range([
                         'min' => 1,
                         'max' => 8,
-                        'notInRangeMessage' => 'Le nombre de passagers doit être entre {{ min }} et {{ max }}',
+                        'notInRangeMessage' => 'form.error.passagers_range',
                     ]),
                 ],
             ])

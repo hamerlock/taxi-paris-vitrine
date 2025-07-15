@@ -1,7 +1,7 @@
 <footer class="site-footer" id="contact">
   <div class="container">
-    <p>&copy; {{ "now" | date("Y") }} Taxi Paris Centre. Tous droits réservés.</p>
-    <p>Service de taxi professionnel au cœur de Paris – Prix fixes CDG €65, Orly €55 – Disponible 24h/24, 7/7</p>
-    <p>Contact : <a href="tel:0189705051">01 89 70 50 51</a> – <a href="mailto:contact@taxiparis.fr">contact@taxiparis.fr</a></p>
+    <p>&copy; {{ "now" | date("Y") }} Taxi Paris Centre. {{ 'footer.rights'|trans }}</p>
+    <p>{{ 'footer.desc'|trans }}</p>
+    <p>{{ 'footer.contact'|trans|raw }}</p>
   </div>
 </footer>

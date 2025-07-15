@@ -1,12 +1,12 @@
 <section class="reservation-form" id="reservation">
   <div class="container">
-    <h2 class="reservation-title">Réservez Votre Course</h2>
-    <p class="reservation-subtitle">Confirmation immédiate – Prix fixe garanti</p>
+    <h2 class="reservation-title">{{ 'reservation.title'|trans }}</h2>
+    <p class="reservation-subtitle">{{ 'reservation.subtitle'|trans }}</p>
     <div class="reservation-form-card">
       {{ form_start(reservation_form, {'action': path('reserver_submit'), 'attr': {'data-turbo': 'false'}}) }}
         <!-- Type de véhicule avec images -->
         <div class="form-group">
-          <label>Type de véhicule</label>
+          <label>{{ 'reservation.vehicle_type'|trans }}</label>
           <div class="vehicle-types">
             {% set selected = reservation_form.vehicle_type.vars.value %}
             {% for type in vehicle_types %}
@@ -29,7 +29,7 @@
         </div>
         {# Adresse de prise en charge avec autocomplete #}
         <div class="form-group">
-          <label for="pickup">Adresse de prise en charge</label>
+          <label for="pickup">{{ 'reservation.pickup'|trans }}</label>
           <select
             name="trip[pickup]"
             id="trip[pickup]"
@@ -38,7 +38,7 @@
             required
             class="form-control"
           >
-            <option value="">Choisissez une adresse</option>
+            <option value="">{{ 'reservation.choose_address'|trans }}</option>
             {% if reservation_form.pickup.vars.value %}
               <option value="{{ reservation_form.pickup.vars.value }}" selected>
                 {{ reservation_form.pickup.vars.value }}
@@ -48,11 +48,11 @@
           {% if reservation_form.pickup.vars.errors|length > 0 %}
             <span class="error" style="color:red;">{{ reservation_form.pickup.vars.errors.0.message }}</span>
           {% endif %}
-          <span class="error" id="pickup-error" style="display:none;color:red;">Veuillez choisir une adresse.</span>
+          <span class="error" id="pickup-error" style="display:none;color:red;">{{ 'reservation.pickup_error'|trans }}</span>
         </div>
         {# Adresse de destination avec autocomplete #}
         <div class="form-group">
-          <label for="dropoff">Adresse de destination</label>
+          <label for="dropoff">{{ 'reservation.dropoff'|trans }}</label>
           <select
             name="trip[dropoff]"
             id="trip[dropoff]"
@@ -61,7 +61,7 @@
             required
             class="form-control"
           >
-            <option value="">Choisissez une adresse</option>
+            <option value="">{{ 'reservation.choose_address'|trans }}</option>
             {% if reservation_form.dropoff.vars.value %}
               <option value="{{ reservation_form.dropoff.vars.value }}" selected>
                 {{ reservation_form.dropoff.vars.value }}
@@ -71,7 +71,7 @@
           {% if reservation_form.dropoff.vars.errors|length > 0 %}
             <span class="error" style="color:red;">{{ reservation_form.dropoff.vars.errors.0.message }}</span>
           {% endif %}
-          <span class="error" id="dropoff-error" style="display:none;color:red;">Veuillez choisir une adresse.</span>
+          <span class="error" id="dropoff-error" style="display:none;color:red;">{{ 'reservation.dropoff_error'|trans }}</span>
         </div>
         {{ form_row(reservation_form.date) }}
         {{ form_row(reservation_form.heure) }}
@@ -80,10 +80,10 @@
         {{ form_row(reservation_form.telephone) }}
         {{ form_row(reservation_form.passagers) }}
         <button type="submit" class="btn btn-danger reservation-btn">
-          <i class="fas fa-calendar-check"></i> Confirmer la Réservation
+          <i class="fas fa-calendar-check"></i> {{ 'reservation.confirm'|trans }}
         </button>
       {{ form_end(reservation_form, {'render_rest': false}) }}
     </div>
-    <p class="reservation-info">Nous vous rappelons sous 5 minutes pour confirmer votre réservation.</p>
+    <p class="reservation-info">{{ 'reservation.info'|trans }}</p>
   </div>
 </section>

@@ -6,17 +6,18 @@
     </div>
     <nav class="main-nav">
       <ul>
-        <li><a href="{{ path('home') }}">Accueil</a></li>
-        <li><a href="{{ path('home') }}#tarifs">Tarifs</a></li>
-        <li><a href="{{ path('home') }}#reservation">Réserver</a></li>
-        <li><a href="{{ path('home') }}#services">Services</a></li>
-        <li><a href="{{ path('home') }}#contact">Contact</a></li>
+        <li><a href="{{ path('home', {'_locale': app.request.locale}) }}">{{ 'menu.home'|trans }}</a></li>
+        <li><a href="{{ path('home', {'_locale': app.request.locale}) }}#tarifs">{{ 'menu.tarifs'|trans }}</a></li>
+        <li><a href="{{ path('home', {'_locale': app.request.locale}) }}#reservation">{{ 'menu.reserver'|trans }}</a></li>
+        <li><a href="{{ path('home', {'_locale': app.request.locale}) }}#services">{{ 'menu.services'|trans }}</a></li>
+        <li><a href="{{ path('home', {'_locale': app.request.locale}) }}#contact">{{ 'menu.contact'|trans }}</a></li>
       </ul>
     </nav>
     <div class="header-actions">
       <a href="tel:0189705051" class="btn btn-phone"><i class="icon-phone"></i> 01 89 70 50 51</a>
       <div class="lang-switcher">
-        <a href="?lang=fr" class="active">FR</a> | <a href="?lang=en">EN</a>
+        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all | merge({'_locale': 'fr'})) }}" {% if app.request.locale == 'fr' %}class="active"{% endif %}>FR</a> |
+        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all | merge({'_locale': 'en'})) }}" {% if app.request.locale == 'en' %}class="active"{% endif %}>EN</a>
       </div>
     </div>
   </div>

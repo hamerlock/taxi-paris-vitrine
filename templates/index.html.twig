@@ -5,7 +5,7 @@
 {# Affichage du message de confirmation de réservation #}
 {% for message in app.flashes('success') %}
     <div class="alert-success-reservation" role="alert">
-        <i class="fas fa-check-circle"></i> {{ message }}
+        <i class="fas fa-check-circle"></i> {{ message|trans }}
     </div>
 {% endfor %}
 
