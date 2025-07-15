@@ -466,7 +466,8 @@ input[type="text"],
 input[type="date"],
 input[type="time"],
 input[type="tel"],
-input[type="number"] {
+input[type="number"],
+input[type="email"] {
   width: 100%;
   padding: 0.7rem;
   border: 1.5px solid #eaeaea;

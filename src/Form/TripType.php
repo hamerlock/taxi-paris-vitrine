@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class TripType extends AbstractType
 {
@@ -44,6 +45,14 @@ class TripType extends AbstractType
             ])
             ->add('telephone', TelType::class, [
                 'label' => 'Numéro de téléphone',
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Adresse e-mail',
+                'required' => true,
+            ])
+            ->add('nom', TextType::class, [
+                'label' => 'Nom',
+                'required' => true,
             ])
             ->add('passagers', IntegerType::class, [
                 'label' => 'Nombre de passagers',

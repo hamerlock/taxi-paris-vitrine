@@ -32,6 +32,13 @@ class TripDTO
     #[Assert\Regex(pattern: '/^(\+33|0)[1-9](\d{8})$/', message: 'Veuillez saisir un numéro de téléphone français valide')]
     private string $telephone = '';
 
+    #[Assert\NotBlank(message: 'Veuillez saisir votre adresse e-mail')]
+    #[Assert\Email(message: 'Veuillez saisir une adresse e-mail valide')]
+    private ?string $email = null;
+
+    #[Assert\NotBlank(message: 'Veuillez saisir votre nom')]
+    private ?string $nom = null;
+
     #[Assert\NotBlank(message: 'Veuillez indiquer le nombre de passagers')]
     #[Assert\Range(min: 1, max: 8, notInRangeMessage: 'Le nombre de passagers doit être entre {{ min }} et {{ max }}')]
     private int $passagers = 1;
@@ -109,6 +116,28 @@ class TripDTO
         return $this;
     }
 
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(?string $nom): self
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
     public function getPassagers(): int
     {
         return $this->passagers;
@@ -149,11 +178,11 @@ class TripDTO
     /**
      * Retourne la date et l'heure combinées
      */
-    public function getDateTime(): \DateTimeInterface
+    public function getDateTime(): string
     {
         $dateString = $this->date->format('Y-m-d');
         $timeString = $this->heure->format('H:i:s');
-        return new \DateTime($dateString . ' ' . $timeString);
+        return $dateString . ' à ' . $timeString;
     }
 
     /**
