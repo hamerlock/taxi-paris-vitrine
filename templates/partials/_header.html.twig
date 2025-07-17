@@ -16,8 +16,8 @@
     <div class="header-actions">
       <a href="tel:0189705051" class="btn btn-phone"><i class="icon-phone"></i> 01 89 70 50 51</a>
       <div class="lang-switcher">
-        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all | merge({'_locale': 'fr'})) }}" {% if app.request.locale == 'fr' %}class="active"{% endif %}>FR</a> |
-        <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all | merge({'_locale': 'en'})) }}" {% if app.request.locale == 'en' %}class="active"{% endif %}>EN</a>
+        <a href="{{ path('home', {'_locale': 'fr'}) }}" {% if app.request.locale == 'fr' %}class="active"{% endif %}>FR</a> |
+        <a href="{{ path('home', {'_locale': 'en'}) }}" {% if app.request.locale == 'en' %}class="active"{% endif %}>EN</a>
       </div>
     </div>
   </div>
